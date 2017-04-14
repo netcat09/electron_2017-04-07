@@ -1,0 +1,24 @@
+{
+  "name": "apkMaster",
+  "version": "1.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  },
+  "dependencies": {
+    "adbkit": "^2.7.0",
+    "angular": "^1.6.2",
+    "bluebird": "^3.5.0",
+    "bulma": "^0.3.2",
+    "checklist-model": "^0.11.0",
+    "dir-to-json": "0.0.3",
+    "electron": "^1.6.2",
+    "electron-compile": "^6.1.2",
+    "electron-prebuilt": "^0.35.6",
+    "google-play-scraper": "^3.2.3",
+    "node-adb": "^0.1.2"
+  },
+  "devDependencies": {
+    "electron-packager": "^8.5.2"
+  }
+}

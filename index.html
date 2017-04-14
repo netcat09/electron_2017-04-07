@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html ng-app="apkMaster">
+  <head>
+    <meta charset="UTF-8">
+    <title>beta test apkMaster</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/checklist-model/checklist-model.js"></script>
+    <script src="index.js"></script>
+    <script src="services/apklist.js"></script>
+    <script src="services/adb-start.js"></script>
+    <script src="services/connect.js"></script>
+    <script src="services/gplay.js"></script>
+    <script src="services/installapk.js"></script>
+    <script src="controllers/apkmaster.js"></script>
+
+
+
+
+
+  </head>
+  <body ng-controller="master">
+
+  <div class="columns">
+      <div class="column is-narrow">
+              <aside class="menu">
+                  <div class="box">
+                      <img src="image001.png">
+                  </div>
+                  <div class="box">
+                     <p class="menu-label">
+                     <a class="button is-primary" ng-click="getInfo()">Connect to Device</a>
+                     </p>
+
+                      <ul class="menu-list">
+                          <li>Производитель</li><br>
+                          <li>{{ smartphone['ro.product.brand'] }}</li><br>
+                          <li>Модель</li><br>
+                          <li id="model"></li>
+                          <li>{{ smartphone['ro.product.model'] }}</li>
+
+                      </ul>
+                     <p class="menu-label">
+                        <a class="button is-primary" ng-click="installApk()">Install selected</a>
+                     </p>
+                  </div>
+                  <div class="box">
+                      Установлено {{ result }} из {{ apkSelected.name.length }}
+                  </div>
+
+
+              </aside>
+
+      </div>
+
+
+
+      <div >
+
+          <section class="hero is-primary">
+              <div class="hero-body">
+                  <div class="container">
+                      <h1 class="title">
+                          APKMaster v 1.0.1
+                      </h1>
+                      <h2 class="subtitle">
+                          Список приложений для установки
+                      </h2>
+                  </div>
+              </div>
+          </section>
+
+          <div class="box" ng-repeat="item in apks" style="display: inline-block; width: 300px; margin: 5px" >
+                      <article class="media">
+                          <div class="media-left">
+                              <figure class="image is-32x32">
+                                  <img src = "http:{{ item.icon }}" alt="Image">
+                              </figure>
+                          </div>
+                          <div class="media-content">
+                              <div class="content">
+                                  <p>
+                                      <small>{{ item.title }}</small>
+                                      <br>
+
+                                  </p>
+                                  <small>{{ item.description | limitTo:150 }}...</small>
+                              </div>
+                              <nav class="level">
+                                  <div class="field">
+                                      <p class="control">
+                                          <label class="checkbox">
+                                              <input type="checkbox" checklist-model="apkSelected.name" checklist-value="item.name">
+                                              Выбрать
+                                          </label>
+                                      </p>
+                                  </div>
+                              </nav>
+                          </div>
+                      </article>
+          </div>
+
+
+
+          </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
